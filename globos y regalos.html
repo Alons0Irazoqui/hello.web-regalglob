@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RegalGlob crea arreglos de globos y regalos de alta gama en Monterrey: bouquets de cumpleaños, kits de regalo y decoración de globos para eventos, baby showers y aniversarios. Cotiza por WhatsApp.">
+<meta name="keywords" content="arreglos de globos Monterrey, globos y regalos, bouquet de globos, kits de regalo con globos, decoración de globos para eventos, baby shower globos, globos San Valentín, cumpleaños globos Monterrey, RegalGlob">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RegalGlob | Arreglos de Globos y Regalos Premium">
+<meta property="og:description" content="Bouquets de globos, kits de regalo y decoración para cada ocasión especial. Diseño personalizado, entrega cuidadosa. Cotiza por WhatsApp.">
+<meta property="og:image" content="img/logo.png">
+<meta name="theme-color" content="#D0407A">
+<title>RegalGlob | Arreglos de Globos y Regalos Premium en Monterrey</title>
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   VARIABLES — RegalGlob Brand System
+============================================= */
+:root {
+  --pink:         #D0407A;   /* Rosa / Magenta — marca primaria */
+  --pink-light:   #E8709B;   /* Rosa claro — texto/acentos sobre fondo oscuro */
+  --pink-ink:     #A8335F;   /* Rosa oscuro — texto pequeño sobre fondo claro (AA) */
+  --pink-subtle:  rgba(208,64,122,0.08);
+  --purple:       #7752A4;   /* Púrpura — marca secundaria */
+  --purple-light: #9B7FC2;
+  --purple-dark:  #5C3D80;
+  --black:        #1A1A1A;
+  --dark:         #1E1820;
+  --dark-2:       #241D2B;
+  --dark-3:       #2B2432;
+  --white:        #FFFFFF;
+  --blush:        #F7ECF2;   /* Rosa pastel — fondos suaves */
+  --blush-2:      #F2DCEB;   /* Rosa pastel — separadores, tarjetas */
+  --text-dark:    #1A1A1A;
+  --text-mid:     #5B5560;
+  --text-soft:    #8B8390;
+  --text-muted:   rgba(255,255,255,0.62);
+  --text-dim:     rgba(255,255,255,0.34);
+  --border-d:     rgba(208,64,122,0.18);
+  --border-l:     rgba(208,64,122,0.26);
+  --font-serif:   'Fraunces', Georgia, serif;
+  --font-sans:    'Plus Jakarta Sans', system-ui, sans-serif;
+  --ease-out:     cubic-bezier(0.22,1,0.36,1);
+  --ease-inout:   cubic-bezier(0.65,0,0.35,1);
+}
+
+/* =============================================
+   RESET
+============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+/* =============================================
+   LOADER
+============================================= */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--black);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0;
+  transition: opacity 0.9s var(--ease-out), visibility 0.9s;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-logo-wrap {
+  animation: ldLogoIn 0.9s var(--ease-out) both;
+  text-align: center;
+}
+.loader-logo-wrap img {
+  width: 150px; height: auto;
+  animation: ldPulse 2.8s ease-in-out infinite;
+}
+@keyframes ldLogoIn { from { opacity:0; transform:scale(0.88) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes ldPulse   { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
+
+.loader-tag {
+  font-size: 9px; letter-spacing: 5px;
+  color: var(--pink-light); text-transform: uppercase;
+  margin-top: 14px; font-weight: 500;
+  animation: ldFadeUp 0.8s var(--ease-out) 0.5s both;
+}
+.loader-progress {
+  width: 110px; height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin-top: 26px; overflow: hidden;
+  animation: ldFadeUp 0.5s var(--ease-out) 0.3s both;
+}
+.loader-progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--pink), var(--purple-light), var(--pink));
+  animation: ldFill 1.4s var(--ease-inout) 0.4s forwards;
+}
+@keyframes ldFill   { to { width: 100%; } }
+@keyframes ldFadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* =============================================
+   MOBILE MENU
+============================================= */
+#mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,7,12,0.98);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 36px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s var(--ease-out), visibility 0.4s;
+}
+#mobile-menu.open { opacity: 1; visibility: visible; }
+
+.mob-logo { display: flex; justify-content: center; margin-bottom: 10px; }
+.mob-logo-pill { display: flex; align-items: center; }
+.mob-logo-pill img { height: 84px; width: auto; display: block; filter: drop-shadow(0 0 14px rgba(208,64,122,0.35)); }
+
+#mobile-menu a {
+  font-family: var(--font-serif);
+  font-size: 30px; font-weight: 300;
+  color: var(--white); letter-spacing: 1px;
+  transition: color 0.3s;
+}
+#mobile-menu a:hover { color: var(--pink-light); }
+
+/* =============================================
+   NAVIGATION
+============================================= */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 18px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.5s var(--ease-out), padding 0.4s var(--ease-out),
+              backdrop-filter 0.5s, box-shadow 0.4s;
+}
+#nav.scrolled {
+  padding: 12px 5%;
+  background: rgba(20,15,22,0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 1px 0 var(--border-d);
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-pill { display: flex; align-items: center; flex-shrink: 0; }
+.nav-logo-pill img { height: 52px; width: auto; display: block; transition: filter 0.3s; }
+.nav-logo-text { line-height: 1.1; }
+.nav-logo-text strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 16px; font-weight: 600;
+  color: var(--white); letter-spacing: 0.5px;
+}
+.nav-logo-text small { font-size: 8px; letter-spacing: 3px; color: var(--pink-light); text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a {
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-muted);
+  transition: color 0.3s; font-weight: 400;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  padding: 9px 22px;
+  border: 1px solid var(--pink-light);
+  color: var(--pink-light);
+  font-size: 9.5px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+  font-family: var(--font-sans);
+}
+.nav-cta:hover { background: var(--pink-light); color: var(--black); }
+
+.nav-ham { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-ham span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+.nav-ham.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
+.nav-ham.open span:nth-child(2) { opacity: 0; }
+.nav-ham.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+
+/* =============================================
+   HERO
+============================================= */
+#hero {
+  position: relative; height: 100svh; min-height: 620px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  background: url('https://images.unsplash.com/photo-1571986584949-8ebd7cd2151b?auto=format&fit=crop&w=1920&h=1080&q=80') center 40% / cover no-repeat;
+  background-attachment: fixed;
+}
+@media (max-width: 768px) { #hero { background-attachment: scroll; } }
+
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(170deg, rgba(26,15,28,0.90) 0%, rgba(32,20,36,0.66) 45%, rgba(20,10,22,0.86) 100%),
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(208,64,122,0.10) 0%, transparent 70%);
+}
+
+.hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 24px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 9.5px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--pink-light); font-weight: 500; margin-bottom: 28px;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 38px; height: 1px; background: var(--pink-light); opacity: 0.5; }
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(46px, 9vw, 96px);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -1px; color: var(--white);
+  margin-bottom: 18px; min-height: 1.05em;
+  opacity: 0; transform: translateY(36px);
+  animation: fadeUp 1s var(--ease-out) 0.45s forwards, titleFloat 7s ease-in-out infinite 1.8s;
+}
+#htl-text {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--pink) 0%, var(--purple-light) 25%, var(--pink-light) 50%, var(--purple) 75%, var(--pink) 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: titleShimmer 7s ease-in-out infinite;
+}
+@keyframes titleShimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+@keyframes titleFloat { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.01); } }
+@keyframes subtitleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes sectionTitleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+.typer-cursor {
+  display: inline-block; width: 2px; height: 0.85em;
+  background: var(--pink-light); vertical-align: middle;
+  margin-left: 3px; transition: opacity 0.6s var(--ease-out);
+  animation: cursorBlink 0.75s ease-in-out infinite;
+}
+@keyframes cursorBlink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2.4vw, 24px);
+  font-weight: 300; font-style: italic;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  opacity: 0; transform: translateY(24px);
+  animation: fadeUp 1s var(--ease-out) 0.75s forwards, subtitlePulse 7s ease-in-out infinite 2.5s, subtitleFloat 7s ease-in-out infinite 3s;
+}
+@keyframes subtitlePulse { 0%,100% { color: rgba(255,255,255,0.62); } 50% { color: rgba(232,112,155,0.9); } }
+
+.hero-desc {
+  font-size: 15px; color: var(--text-muted);
+  max-width: 520px; margin: 0 auto 44px;
+  line-height: 1.85; font-weight: 300;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s var(--ease-out) 0.95s forwards;
+}
+
+.hero-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s var(--ease-out) 1.15s forwards;
+}
+
+.btn-primary {
+  padding: 16px 40px; background: var(--pink);
+  color: var(--white); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 600;
+  font-family: var(--font-sans);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--pink-ink); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(208,64,122,0.35); }
+
+.btn-ghost {
+  padding: 15px 40px;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: var(--white); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 400;
+  font-family: var(--font-sans);
+  transition: border-color 0.3s, color 0.3s, transform 0.3s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--pink-light); color: var(--pink-light); transform: translateY(-2px); }
+
+.hero-scroll {
+  position: absolute; bottom: 30px; left: 50%;
+  transform: translateX(-50%); z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 1s var(--ease-out) 1.6s forwards;
+}
+.hero-scroll span { font-size: 8px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-dim); }
+.scroll-line { width: 1px; height: 46px; background: linear-gradient(to bottom, var(--pink-light), transparent); animation: scrollPulse 2.2s ease-in-out infinite; }
+@keyframes fadeUp      { to { opacity:1; transform:translateY(0); } }
+@keyframes scrollPulse { 0%,100%{opacity:0.25;} 50%{opacity:1;} }
+
+/* Hero ambient glow — único acento decorativo, sutil */
+.hero-glow-pulse {
+  position: absolute; top: 42%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px; height: 320px;
+  background: radial-gradient(ellipse, rgba(208,64,122,0.14) 0%, rgba(119,82,164,0.08) 55%, transparent 75%);
+  pointer-events: none; z-index: 2;
+  animation: glowPulse 5s ease-in-out infinite 1.5s;
+}
+@keyframes glowPulse { 0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1);} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.15);} }
+
+/* =============================================
+   LAYOUT HELPERS
+============================================= */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--pink-ink); font-weight: 600; margin-bottom: 18px;
+}
+.section-tag::before, .section-tag::after { content: ''; display: block; width: 26px; height: 1px; background: var(--pink-ink); opacity: 0.45; }
+.section-tag.no-lines::before, .section-tag.no-lines::after { display: none; }
+[style*="--dark"] .section-tag, #rooms .section-tag, #gallery .section-tag, #contact .section-tag { color: var(--pink-light); }
+#rooms .section-tag::before, #rooms .section-tag::after,
+#gallery .section-tag::before, #gallery .section-tag::after,
+#contact .section-tag::before, #contact .section-tag::after { background: var(--pink-light); }
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px,4.6vw,56px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.5px;
+}
+.section-lead { margin-top: 18px; font-size: 15px; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.85; font-weight: 300; }
+.section-header { text-align: center; margin-bottom: 68px; }
+
+/* Shimmer animado de marca — reutilizado en todos los títulos del sitio */
+.section-title em, .about-title em, .contact-title em {
+  font-style: italic;
+  background: linear-gradient(90deg, var(--pink) 0%, var(--purple-light) 25%, var(--pink-light) 50%, var(--purple) 75%, var(--pink) 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: titleShimmer 8s ease-in-out infinite;
+}
+/* Variante clara — para títulos sobre el degradado rosa/púrpura de la banda Promesa */
+.exp-tagline em {
+  font-style: italic;
+  background: linear-gradient(90deg, rgba(255,255,255,0.75) 0%, #FFFFFF 30%, rgba(255,255,255,0.6) 55%, #FFFFFF 80%, rgba(255,255,255,0.75) 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: titleShimmer 6s ease-in-out infinite;
+}
+
+/* Reveal con leve desenfoque para títulos y subtítulos — más presencia al aparecer */
+.text-reveal { filter: blur(7px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out), filter 0.8s var(--ease-out); }
+.text-reveal.visible { filter: blur(0); animation: sectionTitleFloat 6s ease-in-out infinite 0.7s; }
+
+/* =============================================
+   PARTÍCULAS — acentos flotantes rosa/púrpura
+============================================= */
+.particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
+.particles span { position: absolute; border-radius: 50%; filter: blur(1px); animation: particleDrift ease-in-out infinite; }
+.particles span:nth-child(1) { width: 9px;  height: 9px;  left: 7%;  top: 72%; background: var(--pink-light);   opacity: 0.55; animation-duration: 15s; animation-delay: 0s; }
+.particles span:nth-child(2) { width: 6px;  height: 6px;  left: 21%; top: 18%; background: var(--purple-light); opacity: 0.5;  animation-duration: 12s; animation-delay: 1.5s; }
+.particles span:nth-child(3) { width: 13px; height: 13px; left: 37%; top: 82%; background: var(--pink);         opacity: 0.35; animation-duration: 19s; animation-delay: 0.8s; }
+.particles span:nth-child(4) { width: 7px;  height: 7px;  left: 54%; top: 12%; background: var(--purple);       opacity: 0.45; animation-duration: 14s; animation-delay: 2.4s; }
+.particles span:nth-child(5) { width: 5px;  height: 5px;  left: 71%; top: 58%; background: var(--pink-light);   opacity: 0.55; animation-duration: 11s; animation-delay: 0.4s; }
+.particles span:nth-child(6) { width: 11px; height: 11px; left: 87%; top: 28%; background: var(--purple-light); opacity: 0.32; animation-duration: 17s; animation-delay: 2s; }
+.particles.on-light span { opacity: 0.28; filter: blur(1.5px); }
+.particles.on-light span:nth-child(odd)  { background: var(--pink); }
+.particles.on-light span:nth-child(even) { background: var(--purple); }
+@keyframes particleDrift {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  50%      { transform: translateY(-36px) translateX(12px) scale(1.15); }
+}
+@media (max-width: 640px) { .particles span:nth-child(4), .particles span:nth-child(6) { display: none; } }
+
+/* =============================================
+   ABOUT — blush section
+============================================= */
+#about {
+  padding: 120px 0;
+  background:
+    linear-gradient(120deg, rgba(247,236,242,0.97) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1800&q=80') center 35% / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#about::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(208,64,122,0.12), transparent 34%),
+              radial-gradient(circle at 85% 18%, rgba(119,82,164,0.14), transparent 30%);
+  pointer-events: none;
+}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
+
+.about-visual { position: relative; }
+.about-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
+.about-badge {
+  position: absolute; top: 24px; right: -20px;
+  width: 92px; height: 92px; background: var(--pink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  box-shadow: 0 8px 32px rgba(90,20,50,0.18);
+}
+.about-badge strong { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--white); line-height: 1; }
+.about-badge span   { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); font-weight: 600; text-align: center; line-height: 1.4; }
+
+.about-content { padding: 0 8px; }
+.about-title { font-family: var(--font-serif); font-size: clamp(28px,3.6vw,44px); font-weight: 400; line-height: 1.18; color: var(--text-dark); margin-bottom: 22px; }
+.about-text { font-size: 15px; color: var(--text-mid); line-height: 1.9; margin-bottom: 18px; font-weight: 300; }
+
+.about-stats { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(208,64,122,0.22); }
+.about-stat strong { display: block; font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: var(--pink-ink); line-height: 1; margin-bottom: 7px; }
+.about-stat span   { font-size: 10px; letter-spacing: 0.5px; color: var(--text-soft); font-weight: 400; line-height: 1.5; display: block; max-width: 150px; }
+
+/* =============================================
+   CATEGORÍAS (#rooms) — dark section
+============================================= */
+#rooms {
+  padding: 120px 0; position: relative; overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(20,15,24,0.94) 0%, rgba(36,29,43,0.90) 45%, rgba(20,15,24,0.96) 100%),
+    url('https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?auto=format&fit=crop&w=1920&q=60') center 30% / cover no-repeat,
+    var(--dark-2);
+}
+#rooms .container { position: relative; z-index: 2; }
+
+.rooms-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.room-card { position: relative; overflow: hidden; cursor: pointer; }
+.room-card-inner { aspect-ratio: 3/4; position: relative; overflow: hidden; }
+
+.room-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.9s var(--ease-out); }
+.room-card:hover .room-card-img { transform: scale(1.07); }
+
+.room-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,6,12,0.95) 0%, rgba(10,6,12,0.2) 55%, transparent 100%); z-index: 1; }
+.room-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 24px; z-index: 2; transform: translateY(6px); transition: transform 0.5s var(--ease-out); }
+.room-card:hover .room-content { transform: translateY(0); }
+
+.room-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); font-weight: 500; margin-bottom: 8px; }
+.room-name { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+.room-desc { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 14px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s var(--ease-out), opacity 0.45s; }
+.room-card:hover .room-desc { max-height: 90px; opacity: 1; }
+
+.room-pills { position: absolute; top: 18px; right: 18px; z-index: 2; display: flex; flex-direction: column; gap: 5px; opacity: 0; transform: translateX(8px); transition: opacity 0.4s, transform 0.4s var(--ease-out); }
+.room-card:hover .room-pills { opacity: 1; transform: translateX(0); }
+.room-pill { background: rgba(20,12,22,0.82); backdrop-filter: blur(8px); border: 1px solid var(--border-d); padding: 4px 9px; font-size: 9px; color: var(--pink-light); letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* =============================================
+   POR QUÉ REGALGLOB (#amenities) — white section
+============================================= */
+#amenities {
+  padding: 120px 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=80') center / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#amenities::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.14) 0%, transparent 40%, rgba(208,64,122,0.08) 100%);
+  pointer-events: none;
+}
+#amenities .section-title { color: var(--text-dark); }
+#amenities .section-lead  { color: var(--text-mid); }
+
+.amenities-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 68px; }
+.amenity-card {
+  background: var(--blush); padding: 44px 28px;
+  border: 1px solid rgba(208,64,122,0.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.amenity-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--pink), var(--purple)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease-out); }
+.amenity-card:hover { border-color: rgba(208,64,122,0.3); box-shadow: 0 8px 36px rgba(90,20,50,0.08); transform: translateY(-5px); }
+.amenity-card:hover::after { transform: scaleX(1); }
+
+.amenity-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--pink); }
+.amenity-icon svg { width: 100%; height: 100%; }
+.amenity-name { font-family: var(--font-serif); font-size: 17px; font-weight: 500; color: var(--text-dark); margin-bottom: 10px; }
+.amenity-desc { font-size: 13px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
+
+/* =============================================
+   PROMESA (#experience) — brand gradient band
+============================================= */
+#experience {
+  padding: 96px 0; position: relative; overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(208,64,122,0.90) 0%, rgba(119,82,164,0.90) 100%),
+    url('https://images.unsplash.com/photo-1571986584949-8ebd7cd2151b?auto=format&fit=crop&w=1920&q=60') center 60% / cover no-repeat,
+    linear-gradient(120deg, var(--pink) 0%, var(--purple) 100%);
+}
+#experience::before {
+  content: 'REGALGLOB';
+  position: absolute; font-family: var(--font-serif);
+  font-size: clamp(70px,13vw,170px); font-weight: 600;
+  color: rgba(255,255,255,0.07); white-space: nowrap;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  letter-spacing: 6px; pointer-events: none;
+}
+.exp-inner { display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap; position: relative; z-index: 1; }
+.exp-left { flex: 1; min-width: 280px; }
+.exp-left .section-tag { color: rgba(255,255,255,0.75); }
+.exp-left .section-tag::before, .exp-left .section-tag::after { background: rgba(255,255,255,0.5); }
+.exp-tagline { font-family: var(--font-serif); font-size: clamp(28px,3.6vw,46px); font-weight: 400; color: var(--white); line-height: 1.18; margin-top: 8px; }
+.exp-stats { display: flex; gap: 52px; flex-wrap: wrap; }
+.exp-stat { text-align: left; }
+.exp-stat strong { display: block; font-family: var(--font-serif); font-size: 26px; font-weight: 500; color: var(--white); line-height: 1; margin-bottom: 8px; }
+.exp-stat span { font-size: 10px; letter-spacing: 0.5px; color: rgba(255,255,255,0.78); font-weight: 500; }
+
+/* =============================================
+   GALERÍA — dark section
+============================================= */
+#gallery { padding: 120px 0; background: var(--dark); }
+#gallery .section-title { color: var(--white); }
+#gallery .section-lead  { color: var(--text-muted); }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 330px 260px; gap: 4px; margin-top: 68px; }
+.gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.85s var(--ease-out), filter 0.5s; }
+.gallery-item:hover img { transform: scale(1.06); filter: brightness(0.75); }
+.gi-label {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px;
+  background: linear-gradient(to top, rgba(10,6,12,0.88), transparent);
+  font-family: var(--font-serif); font-size: 15px; color: var(--white);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.4s, transform 0.4s var(--ease-out);
+  z-index: 2;
+}
+.gallery-item:hover .gi-label { opacity: 1; transform: translateY(0); }
+
+.gi-1 { grid-column: 1/7;  }
+.gi-2 { grid-column: 7/10; }
+.gi-3 { grid-column: 10/13;}
+.gi-4 { grid-column: 1/5;  }
+.gi-5 { grid-column: 5/9;  }
+.gi-6 { grid-column: 9/13; }
+
+/* =============================================
+   CÓMO FUNCIONA (#proceso) — blush section
+============================================= */
+#proceso {
+  padding: 120px 0;
+  background:
+    linear-gradient(120deg, rgba(242,220,235,0.95) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=80') center 40% / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#proceso::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(208,64,122,0.13), transparent 30%);
+  pointer-events: none;
+}
+#proceso .section-title { color: var(--text-dark); }
+#proceso .section-lead  { color: var(--text-mid); }
+#proceso .container { position: relative; z-index: 2; }
+.review-card.process-card::before { display: none; }
+.process-num {
+  font-family: var(--font-serif); font-size: 40px; font-weight: 500; line-height: 1; margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--pink) 0%, var(--purple) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+}
+.process-title { font-family: var(--font-serif); font-size: 19px; font-weight: 500; color: var(--text-dark); margin-bottom: 10px; }
+.process-desc { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.review-card {
+  background: var(--white); padding: 40px 32px;
+  border: 1px solid rgba(208,64,122,0.12);
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.4s, transform 0.4s var(--ease-out);
+}
+.review-card::before {
+  content: '\201C';
+  position: absolute; top: 10px; right: 22px;
+  font-family: var(--font-serif); font-size: 90px; font-weight: 600;
+  color: rgba(208,64,122,0.1); line-height: 1; pointer-events: none;
+}
+.review-card:hover { box-shadow: 0 14px 52px rgba(90,20,50,0.12); transform: translateY(-5px); }
+.btn-ghost-dark {
+  display: inline-block; padding: 14px 40px;
+  border: 1px solid rgba(0,0,0,0.18);
+  color: var(--text-dark); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 400;
+  font-family: var(--font-sans);
+  transition: border-color 0.3s, color 0.3s;
+}
+.btn-ghost-dark:hover { border-color: var(--pink); color: var(--pink-ink); }
+
+/* =============================================
+   CONTACTO — dark section
+============================================= */
+#contact {
+  padding: 120px 0; position: relative; overflow: hidden;
+  background:
+    linear-gradient(170deg, rgba(20,15,24,0.95) 0%, rgba(36,29,43,0.92) 50%, rgba(20,15,24,0.96) 100%),
+    url('https://images.unsplash.com/photo-1521478706270-f2e33c203d95?auto=format&fit=crop&w=1920&q=60') center / cover no-repeat,
+    var(--dark-2);
+}
+#contact .container { position: relative; z-index: 2; }
+#contact::before {
+  content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(208,64,122,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-left .section-tag { justify-content: flex-start; }
+.contact-left .section-tag::before { display: none; }
+.contact-title { font-family: var(--font-serif); font-size: clamp(24px,3.2vw,42px); font-weight: 400; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+.contact-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 38px; line-height: 1.8; font-weight: 300; }
+
+#booking-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--pink-light); font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea {
+  background: transparent; border: 1px solid var(--border-d);
+  padding: 13px 16px; color: var(--white);
+  font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+  outline: none; -webkit-appearance: none; appearance: none; border-radius: 0;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group select { background: var(--dark-3); cursor: pointer; }
+.form-group select option { background: var(--dark-3); color: var(--white); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-dim); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--pink-light); box-shadow: 0 0 0 3px rgba(208,64,122,0.14); }
+.form-group input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.35); cursor: pointer; }
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+.form-submit {
+  margin-top: 6px; width: 100%; padding: 17px;
+  background: var(--pink); color: var(--white);
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 600; font-family: var(--font-sans);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.form-submit:hover { background: var(--pink-ink); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(208,64,122,0.3); }
+
+.contact-right .section-tag { justify-content: flex-start; }
+.contact-right .section-tag::before { display: none; }
+.channels { display: flex; flex-direction: column; gap: 2px; margin-top: 30px; }
+.channel { display: flex; align-items: center; gap: 16px; padding: 20px 22px; background: var(--dark-3); border: 1px solid transparent; transition: border-color 0.3s, background 0.3s; cursor: pointer; }
+.channel:hover { border-color: var(--border-d); background: rgba(208,64,122,0.05); }
+.ch-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--pink-subtle); border: 1px solid var(--border-d); flex-shrink: 0; color: var(--pink-light); }
+.ch-icon svg { width: 18px; height: 18px; }
+.ch-info strong { display: block; font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+.ch-info span { font-size: 12px; color: var(--text-muted); }
+.ch-arrow { margin-left: auto; color: var(--text-dim); transition: color 0.3s, transform 0.3s; flex-shrink: 0; }
+.channel:hover .ch-arrow { color: var(--pink-light); transform: translateX(4px); }
+
+.contact-quote { margin-top: 28px; padding: 24px; border: 1px solid var(--border-d); background: var(--pink-subtle); }
+.contact-quote p { font-family: var(--font-serif); font-size: 17px; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.75; text-align: center; }
+.contact-quote cite { display: block; margin-top: 10px; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); font-style: normal; text-align: center; }
+
+/* =============================================
+   FOOTER
+============================================= */
+footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid var(--border-d); }
+.footer-top { display: flex; justify-content: space-between; gap: 56px; flex-wrap: wrap; padding-bottom: 52px; border-bottom: 1px solid var(--border-d); margin-bottom: 32px; }
+.footer-brand { max-width: 270px; }
+.footer-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-logo-pill { display: flex; align-items: center; }
+.footer-logo-pill img { height: 50px; width: auto; }
+.footer-logo-text strong { display: block; font-family: var(--font-serif); font-size: 15px; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
+.footer-logo-text small { font-size: 8px; letter-spacing: 3px; color: var(--pink-light); text-transform: uppercase; }
+.footer-brand p { font-size: 13px; color: var(--text-dim); line-height: 1.8; font-weight: 300; }
+.footer-col h4 { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 16px; font-weight: 500; }
+.footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; color: var(--text-dim); transition: color 0.3s; font-weight: 300; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 11px; color: var(--text-dim); }
+.social-links { display: flex; gap: 10px; }
+.social-link { width: 32px; height: 32px; border: 1px solid var(--border-d); display: flex; align-items: center; justify-content: center; color: var(--text-dim); transition: border-color 0.3s, color 0.3s; }
+.social-link:hover { border-color: var(--pink-light); color: var(--pink-light); }
+.social-link svg { width: 13px; height: 13px; }
+
+/* =============================================
+   WHATSAPP FLOAT
+============================================= */
+#wa-float {
+  position: fixed; bottom: 26px; right: 22px; z-index: 900;
+  width: 58px; height: 58px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 22px rgba(37,211,102,0.4);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+#wa-float:hover { transform: scale(1.1) translateY(-3px); box-shadow: 0 8px 32px rgba(37,211,102,0.55); }
+#wa-float svg { width: 28px; height: 28px; fill: white; position: relative; z-index: 1; }
+.wa-ring { position: absolute; inset: -5px; border-radius: 50%; background: rgba(37,211,102,0.22); animation: waRing 2.5s ease-in-out infinite; }
+.wa-ring-2 { position: absolute; inset: -12px; border-radius: 50%; background: rgba(37,211,102,0.1); animation: waRing 2.5s ease-in-out 0.65s infinite; }
+@keyframes waRing { 0%,100%{transform:scale(1);opacity:0.7;} 50%{transform:scale(1.18);opacity:0;} }
+
+/* =============================================
+   SCROLL REVEAL
+============================================= */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.d1 { transition-delay:0.1s; }
+.d2 { transition-delay:0.2s; }
+.d3 { transition-delay:0.3s; }
+.d4 { transition-delay:0.4s; }
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media (max-width: 1024px) {
+  .rooms-grid { grid-template-columns: 1fr 1fr; }
+  .amenities-grid { grid-template-columns: repeat(2,1fr); }
+  .reviews-grid { grid-template-columns: 1fr; gap: 3px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 52px; }
+  .gallery-grid { grid-template-columns: repeat(6,1fr); grid-template-rows: 280px 220px; }
+  .gi-1{grid-column:1/7;} .gi-2{grid-column:1/4;} .gi-3{grid-column:4/7;}
+  .gi-4{grid-column:1/3;} .gi-5{grid-column:3/5;} .gi-6{grid-column:5/7;}
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-ham { display: flex; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-badge { top: 14px; right: 14px; }
+  .rooms-grid { grid-template-columns: 1fr; }
+  .amenities-grid { grid-template-columns: 1fr 1fr; }
+  .exp-inner { flex-direction: column; gap: 36px; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gi-1,.gi-2,.gi-3,.gi-4,.gi-5,.gi-6 { grid-column: auto; grid-row: auto; }
+  .gallery-grid .gallery-item img { aspect-ratio: 1; height: 220px; }
+}
+@media (max-width: 480px) {
+  .amenities-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { text-align: center; padding: 15px; }
+  .about-stats { gap: 18px; }
+  .exp-stats { gap: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" role="status" aria-label="Cargando RegalGlob">
+  <div class="loader-logo-wrap">
+    <img src="img/logo.png" alt="RegalGlob">
+  </div>
+  <p class="loader-tag">Globos &amp; Regalos</p>
+  <div class="loader-progress"><div class="loader-progress-fill"></div></div>
+</div>
+
+<!-- ============ MOBILE MENU ============ -->
+<div id="mobile-menu" role="dialog" aria-label="Menú principal">
+  <div class="mob-logo">
+    <div class="mob-logo-pill">
+      <img src="img/logo.png" alt="RegalGlob" height="72">
+    </div>
+  </div>
+  <a href="#about"     onclick="closeMob()">Nosotros</a>
+  <a href="#rooms"     onclick="closeMob()">Categorías</a>
+  <a href="#amenities" onclick="closeMob()">Por qué RegalGlob</a>
+  <a href="#gallery"   onclick="closeMob()">Galería</a>
+  <a href="#contact"   onclick="closeMob()">Contacto</a>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav" role="navigation" aria-label="Navegación principal">
+  <a href="#" class="nav-logo" aria-label="RegalGlob - Inicio">
+    <div class="nav-logo-pill">
+      <img src="img/logo.png" alt="Logo RegalGlob" class="nav-logo-img">
+    </div>
+    <div class="nav-logo-text">
+      <strong>RegalGlob</strong>
+      <small>Globos &amp; Regalos</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#rooms">Categorías</a></li>
+    <li><a href="#amenities">Por qué RegalGlob</a></li>
+    <li><a href="#gallery">Galería</a></li>
+    <li><a href="#proceso">Cómo Funciona</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Cotizar por WhatsApp</a>
+  <button class="nav-ham" id="ham" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero" aria-label="Bienvenida a RegalGlob">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-glow-pulse" aria-hidden="true"></div>
+  <div class="particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Arreglos de Globos &amp; Regalos · Monterrey</p>
+    <h1 class="hero-title" aria-label="El regalo, elevado.">
+      <span id="htl-text" aria-hidden="true"></span><span class="typer-cursor" id="hero-cursor" aria-hidden="true"></span>
+    </h1>
+    <p class="hero-subtitle">Bouquets, kits de regalo y decoración para cumpleaños, baby showers, aniversarios y eventos especiales</p>
+    <p class="hero-desc">Creamos arreglos de globos y regalos con estilo propio para celebraciones únicas, desde un detalle íntimo hasta una instalación completa.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Cotizar por WhatsApp</a>
+      <a href="#rooms"   class="btn-ghost">Ver Categorías</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT — blush ============ -->
+<section id="about">
+  <div class="particles on-light" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:120px 0;">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <img
+          src="https://images.unsplash.com/photo-1764870536335-da999efa3560?auto=format&fit=crop&w=900&h=1200&q=80"
+          alt="Bouquet de globos gigantes en forma de corazón en tonos rosa, estilo RegalGlob"
+          class="about-img"
+          loading="lazy">
+        <div class="about-badge">
+          <strong>RG</strong>
+          <span>Edición artesanal</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="section-tag no-lines reveal">Nuestra Historia</p>
+        <h2 class="about-title reveal d1 text-reveal">Detrás de cada arreglo,<br>un <em>regalo con intención</em></h2>
+        <p class="about-text reveal d2">RegalGlob nace de una idea simple: un regalo se siente distinto cuando además de bonito, cuenta una historia. Diseñamos bouquets, kits de regalo y decoraciones para cumpleaños, baby showers, aniversarios, San Valentín y eventos corporativos.</p>
+        <p class="about-text reveal d2">Cada pieza se arma con cuidado, combinando diseño, color y presentación para que el detalle se vea impecable desde el primer vistazo.</p>
+        <div class="about-stats reveal d3">
+          <div class="about-stat">
+            <strong>A mano</strong>
+            <span>Diseño personalizado, con estilo propio</span>
+          </div>
+          <div class="about-stat">
+            <strong>A tu gusto</strong>
+            <span>Paleta cuidada para cada ocasión</span>
+          </div>
+          <div class="about-stat">
+            <strong>Listo</strong>
+            <span>Presentación cuidada y coordinación simple</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORÍAS (#rooms) — dark ============ -->
+<section id="rooms" aria-labelledby="rooms-title">
+  <div class="particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:120px 0;">
+    <div class="section-header">
+      <p class="section-tag reveal">Categorías</p>
+      <h2 class="section-title reveal d1 text-reveal" id="rooms-title" style="color:var(--white);">Un arreglo para <em>cada ocasión</em></h2>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-muted);">Desde bouquets y kits de regalo hasta decoración para baby showers, aniversarios, San Valentín, cumpleaños y eventos corporativos.</p>
+    </div>
+    <div class="rooms-grid">
+
+      <!-- Cumpleaños -->
+      <article class="room-card reveal">
+        <div class="room-card-inner">
+          <img
+            src="https://images.unsplash.com/photo-1560128411-79892dd93bf8?auto=format&fit=crop&w=900&h=1200&q=80"
+            alt="Arco de globos rosa y dorado para fiesta de cumpleaños"
+            class="room-card-img"
+            loading="lazy">
+          <div class="room-overlay"></div>
+          <div class="room-pills">
+            <span class="room-pill">Bouquets</span>
+            <span class="room-pill">Números gigantes</span>
+            <span class="room-pill">Kits sorpresa</span>
+          </div>
+          <div class="room-content">
+            <p class="room-tag">El clásico que nunca falla</p>
+            <h3 class="room-name">Cumpleaños</h3>
+            <p class="room-desc">Bouquets, números gigantes y decoración para que cada fiesta se vea más especial y memorable.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kits de regalo -->
+      <article class="room-card reveal d1">
+        <div class="room-card-inner">
+          <img
+            src="https://images.unsplash.com/photo-1521478706270-f2e33c203d95?auto=format&fit=crop&w=900&h=1200&q=80"
+            alt="Cajas de regalo blancas decoradas con rosas de papel rosa"
+            class="room-card-img"
+            loading="lazy">
+          <div class="room-overlay"></div>
+          <div class="room-pills">
+            <span class="room-pill">Cajas sorpresa</span>
+            <span class="room-pill">Detalles personalizados</span>
+            <span class="room-pill">Listo para regalar</span>
+          </div>
+          <div class="room-content">
+            <p class="room-tag">El regalo, resuelto</p>
+            <h3 class="room-name">Kits de Regalo</h3>
+            <p class="room-desc">Cajas y kits que combinan globos con detalles cuidadosamente elegidos para sorprender desde el primer vistazo.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Eventos -->
+      <article class="room-card reveal d2">
+        <div class="room-card-inner">
+          <img
+            src="https://images.unsplash.com/photo-1780586382191-bef9c740798e?auto=format&fit=crop&w=900&h=1200&q=80"
+            alt="Decoración minimalista con globos blancos y transparentes para evento"
+            class="room-card-img"
+            loading="lazy">
+          <div class="room-overlay"></div>
+          <div class="room-pills">
+            <span class="room-pill">Baby Shower</span>
+            <span class="room-pill">Aniversarios</span>
+            <span class="room-pill">San Valentín</span>
+            <span class="room-pill">Corporativo</span>
+          </div>
+          <div class="room-content">
+            <p class="room-tag">A la medida de tu evento</p>
+            <h3 class="room-name">Eventos</h3>
+            <p class="room-desc">Decoración con globos y ambientación para baby showers, aniversarios, San Valentín y eventos corporativos.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#contact" class="btn-ghost reveal">Solicitar Cotización</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ REGALGLOB (#amenities) — white ============ -->
+<section id="amenities" aria-labelledby="amenities-title">
+  <div class="particles on-light" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:120px 0;">
+    <div class="section-header">
+      <p class="section-tag reveal">Por qué RegalGlob</p>
+      <h2 class="section-title reveal d1 text-reveal" id="amenities-title">La diferencia está en el <em>detalle</em></h2>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-mid);">No somos una tienda de globos genérica; cuidamos cada detalle para que tu celebración luzca elegante y única.</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card reveal">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg></div>
+        <h3 class="amenity-name">Diseño Personalizado</h3>
+        <p class="amenity-desc">Adaptamos colores, tamaños y estilo a la ocasión para que cada proyecto se sienta auténtico y pensado para ti.</p>
+      </div>
+      <div class="amenity-card reveal d1">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
+        <h3 class="amenity-name">Entrega Puntual a Domicilio</h3>
+        <p class="amenity-desc">Coordinamos la entrega y el montaje para que cada detalle llegue en el momento indicado.</p>
+      </div>
+      <div class="amenity-card reveal d2">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <h3 class="amenity-name">Empaque de Regalo de Lujo</h3>
+        <p class="amenity-desc">Cuidamos el empaque y los acabados para que el regalo se vea tan especial como el mensaje que lleva.</p>
+      </div>
+      <div class="amenity-card reveal d3">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3 class="amenity-name">Respuesta Rápida</h3>
+        <p class="amenity-desc">Cotiza y confirma tu pedido por WhatsApp con respuestas ágiles y comunicación clara.</p>
+      </div>
+      <div class="amenity-card reveal">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.8 19.79 19.79 0 01.79 1.1 2 2 0 012.77 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.77a16 16 0 006.29 6.29l1.13-1.13a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <h3 class="amenity-name">Atención Cercana</h3>
+        <p class="amenity-desc">Te acompañamos desde la idea hasta la entrega — sin letra chiquita.</p>
+      </div>
+      <div class="amenity-card reveal d1">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg></div>
+        <h3 class="amenity-name">Materiales Premium</h3>
+        <p class="amenity-desc">Globos, cintas y empaques seleccionados para un acabado de alta gama.</p>
+      </div>
+      <div class="amenity-card reveal d2">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></div>
+        <h3 class="amenity-name">Coordinación en Sitio</h3>
+        <p class="amenity-desc">Para instalaciones y eventos, llegamos a armar y acomodar todo directo en el lugar de tu celebración.</p>
+      </div>
+      <div class="amenity-card reveal d3">
+        <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3 class="amenity-name">Hecho con Cariño</h3>
+        <p class="amenity-desc">Cada pieza se arma a mano, pensando en la persona que lo va a recibir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMESA (#experience) — degradado marca ============ -->
+<section id="experience" aria-label="Nuestra promesa">
+  <div class="particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:96px 0;">
+    <div class="exp-inner">
+      <div class="exp-left reveal">
+        <p class="section-tag">Nuestra Promesa</p>
+        <h2 class="exp-tagline reveal text-reveal"><em>Más</em> que globos,<br>un momento que se recuerda</h2>
+      </div>
+      <div class="exp-stats reveal d1">
+        <div class="exp-stat"><strong>Bouquets</strong><span>Cumpleaños y ocasiones especiales</span></div>
+        <div class="exp-stat"><strong>Kits de Regalo</strong><span>Cajas armadas, listas para sorprender</span></div>
+        <div class="exp-stat"><strong>Eventos</strong><span>Baby showers, aniversarios y más</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA — dark ============ -->
+<!-- Fotos ilustrativas de stock — reemplazar con fotografía real de @regalglob (Instagram) y @regalglob4 (TikTok) en cuanto esté disponible -->
+<section id="gallery" aria-labelledby="gallery-title">
+  <div class="container" style="padding:120px 0;">
+    <div class="section-header">
+      <p class="section-tag reveal">Galería</p>
+      <h2 class="section-title reveal d1" id="gallery-title">Arreglos que <em>hablan por sí solos</em></h2>
+      <p class="section-lead reveal d2" style="color:var(--text-muted);">Una muestra del estilo RegalGlob — cada pieza, diseñada para sorprender.</p>
+    </div>
+    <div class="gallery-grid reveal d1">
+
+      <div class="gallery-item gi-1">
+        <img src="https://images.unsplash.com/photo-1525268771113-32d9e9021a97?auto=format&fit=crop&w=900&q=80"
+             alt="Manos sosteniendo globos rosa, rosa claro y blanco" loading="lazy">
+        <div class="gi-label">Bouquet premium</div>
+      </div>
+
+      <div class="gallery-item gi-2">
+        <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&q=80"
+             alt="Detalle de caja de regalo con listón" loading="lazy">
+        <div class="gi-label">Detalle de regalo</div>
+      </div>
+
+      <div class="gallery-item gi-3">
+        <img src="https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?auto=format&fit=crop&w=900&q=80"
+             alt="Arco de globos con letras luminosas para fiesta" loading="lazy">
+        <div class="gi-label">Decoración de evento</div>
+      </div>
+
+      <div class="gallery-item gi-4">
+        <img src="https://images.unsplash.com/photo-1727178757622-26389a0538f5?auto=format&fit=crop&w=900&q=80"
+             alt="Racimo de globos rosa y dorado en el techo" loading="lazy">
+        <div class="gi-label">Instalación pastel</div>
+      </div>
+
+      <div class="gallery-item gi-5">
+        <img src="https://images.unsplash.com/photo-1587160728015-924483626a1a?auto=format&fit=crop&w=900&q=80"
+             alt="Instalación de globos rosa, blanco y dorado en esquina de pared" loading="lazy">
+        <div class="gi-label">Baby shower</div>
+      </div>
+
+      <div class="gallery-item gi-6">
+        <img src="https://images.unsplash.com/photo-1706515056156-845f73bc81f3?auto=format&fit=crop&w=900&q=80"
+             alt="Caja de regalo con rosas rojas y detalles de corazón para aniversario" loading="lazy">
+        <div class="gi-label">Aniversario</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA (#proceso) — blush ============ -->
+<section id="proceso" aria-labelledby="proceso-title">
+  <div class="particles on-light" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:120px 0;">
+    <div class="section-header">
+      <p class="section-tag reveal">Cómo Funciona</p>
+      <h2 class="section-title reveal d1 text-reveal" id="proceso-title">De la idea al <em>regalo entregado</em></h2>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-mid);">Todo el proceso, sin complicaciones — y siempre por WhatsApp.</p>
+    </div>
+    <div class="reviews-grid reveal d1">
+
+      <div class="review-card process-card">
+        <div class="process-num">01</div>
+        <h3 class="process-title">Elige tu categoría</h3>
+        <p class="process-desc">Cumpleaños, kit de regalo o evento — cuéntanos qué ocasión estás celebrando y qué tienes en mente.</p>
+      </div>
+
+      <div class="review-card process-card">
+        <div class="process-num">02</div>
+        <h3 class="process-title">Cotiza y confirma por WhatsApp</h3>
+        <p class="process-desc">Te enviamos tu cotización y ajustamos colores, tamaño y detalles hasta que quede exactamente como lo imaginaste.</p>
+      </div>
+
+      <div class="review-card process-card">
+        <div class="process-num">03</div>
+        <h3 class="process-title">Recíbelo listo para sorprender</h3>
+        <p class="process-desc">Entrega a domicilio o coordinación en sitio para tu evento — tú solo disfruta el momento.</p>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:52px;" class="reveal">
+      <a href="https://wa.me/528182100831" target="_blank" rel="noopener" class="btn-ghost-dark">Empezar por WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO — dark ============ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="container" style="padding:120px 0;">
+    <div class="section-header">
+      <p class="section-tag reveal">Cotizaciones</p>
+      <h2 class="section-title reveal d1 text-reveal" id="contact-title" style="color:var(--white);">Solicita tu <em>cotización</em></h2>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-muted);">Cuéntanos qué ocasión estás celebrando y armamos el arreglo perfecto — respondemos por WhatsApp.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <p class="section-tag no-lines">Formulario de Cotización</p>
+        <h3 class="contact-title reveal text-reveal">Tu arreglo <em>perfecto</em><br>comienza aquí</h3>
+        <p class="contact-sub reveal d1">Cuéntanos los detalles de tu ocasión. Te respondemos por WhatsApp en minutos.</p>
+        <form id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+52 81 0000 0000" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkin">Fecha de entrega</label>
+              <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+              <label for="habitacion">Tipo de arreglo</label>
+              <select id="habitacion" name="habitacion">
+                <option value="">Seleccionar...</option>
+                <option value="Cumpleaños">Cumpleaños</option>
+                <option value="Baby Shower">Baby Shower</option>
+                <option value="Aniversario">Aniversario</option>
+                <option value="San Valentín">San Valentín</option>
+                <option value="Kit de Regalo">Kit de Regalo</option>
+                <option value="Evento corporativo">Evento corporativo</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="huespedes">Tamaño aproximado</label>
+            <select id="huespedes" name="huespedes">
+              <option value="Pequeño (detalle individual)">Pequeño (detalle individual)</option>
+              <option value="Mediano (bouquet estándar)" selected>Mediano (bouquet estándar)</option>
+              <option value="Grande (instalación)">Grande (instalación)</option>
+              <option value="Evento completo">Evento completo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Comentarios o detalles</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Colores, tema, presupuesto aproximado..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Solicitar Cotización por WhatsApp →</button>
+        </form>
+      </div>
+      <div class="contact-right reveal d1">
+        <p class="section-tag no-lines">Otras Formas de Contacto</p>
+        <h3 class="contact-title reveal text-reveal">También <em>puedes</em><br>contactarnos así</h3>
+        <div class="channels">
+          <div class="channel" style="cursor:default;">
+            <div class="ch-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="ch-info"><strong>Atención</strong><span>Escríbenos por WhatsApp, respondemos lo antes posible</span></div>
+          </div>
+          <a href="https://wa.me/528182100831" target="_blank" rel="noopener" class="channel" aria-label="WhatsApp">
+            <div class="ch-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="ch-info"><strong>WhatsApp</strong><span>81 8210 0831 · Respuesta rápida</span></div>
+            <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="https://www.instagram.com/regalglob" target="_blank" rel="noopener" class="channel" aria-label="Instagram">
+            <div class="ch-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="ch-info"><strong>Instagram</strong><span>@regalglob · Mira nuestros arreglos</span></div>
+            <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@regalglob4" target="_blank" rel="noopener" class="channel" aria-label="TikTok">
+            <div class="ch-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </div>
+            <div class="ch-info"><strong>TikTok</strong><span>@regalglob4 · Míranos en video</span></div>
+            <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="contact-quote">
+          <p>"Cada pedido lo armamos pensando en la sonrisa que va a provocar."</p>
+          <cite>— Equipo RegalGlob</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <div class="footer-logo-pill">
+          <img src="img/logo.png" alt="RegalGlob Logo">
+        </div>
+        <div class="footer-logo-text">
+          <strong>RegalGlob</strong>
+          <small>Globos &amp; Regalos</small>
+        </div>
+      </div>
+      <p>Arreglos de globos y kits de regalo para cada ocasión especial. Monterrey, Nuevo León.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#rooms">Categorías</a></li>
+        <li><a href="#amenities">Por qué RegalGlob</a></li>
+        <li><a href="#gallery">Galería</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categorías</h4>
+      <ul>
+        <li><a href="#rooms">Cumpleaños</a></li>
+        <li><a href="#rooms">Kits de Regalo</a></li>
+        <li><a href="#rooms">Eventos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/528182100831" target="_blank" rel="noopener">WhatsApp: 81 8210 0831</a></li>
+        <li><a href="https://www.instagram.com/regalglob" target="_blank" rel="noopener">Instagram: @regalglob</a></li>
+        <li><a href="https://www.tiktok.com/@regalglob4" target="_blank" rel="noopener">TikTok: @regalglob4</a></li>
+        <li><a href="#proceso">Cómo Funciona</a></li>
+        <li><a href="#contact">Cotizar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 RegalGlob. Todos los derechos reservados.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/regalglob" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.tiktok.com/@regalglob4" target="_blank" rel="noopener" class="social-link" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      <a href="https://wa.me/528182100831" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a href="https://wa.me/528182100831"
+   id="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <div class="wa-ring-2" aria-hidden="true"></div>
+  <div class="wa-ring"   aria-hidden="true"></div>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---- LOADER ---- */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var el = document.getElementById('loader');
+      if (el) el.classList.add('hidden');
+    }, 1500);
+  });
+
+  /* ---- NAV SCROLL ---- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ---- MOBILE MENU ---- */
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobile-menu');
+  var mOpen = false;
+
+  function closeMob() {
+    mOpen = false;
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  window.closeMob = closeMob;
+
+  ham.addEventListener('click', function () {
+    mOpen = !mOpen;
+    ham.classList.toggle('open', mOpen);
+    mob.classList.toggle('open', mOpen);
+    ham.setAttribute('aria-expanded', String(mOpen));
+    document.body.style.overflow = mOpen ? 'hidden' : '';
+  });
+
+  /* ---- HERO TITLE: typewriter + color shimmer ---- */
+  (function () {
+    var el = document.getElementById('htl-text');
+    if (!el) return;
+    var full = 'El regalo, elevado.';
+    var i = 0;
+
+    function tick() {
+      if (i <= full.length) {
+        el.textContent = full.slice(0, i);
+        i++;
+        setTimeout(tick, 55);
+      } else {
+        var cur = document.getElementById('hero-cursor');
+        if (cur) setTimeout(function () { cur.style.opacity = '0'; }, 1400);
+      }
+    }
+    setTimeout(tick, 1300);
+  }());
+
+  /* ---- SCROLL REVEAL ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  var revealIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.09, rootMargin: '0px 0px -32px 0px' });
+  revealEls.forEach(function (el) { revealIO.observe(el); });
+
+  /* ---- BOOKING FORM → WhatsApp ---- */
+  var form = document.getElementById('booking-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n  = document.getElementById('nombre').value.trim();
+      var t  = document.getElementById('telefono').value.trim();
+      var ci = document.getElementById('checkin').value;
+      var h  = document.getElementById('habitacion').value;
+      var hu = document.getElementById('huespedes').value;
+      var m  = document.getElementById('mensaje').value.trim();
+
+      if (!n || !t || !ci) {
+        alert('Por favor completa: nombre, teléfono y fecha de entrega.');
+        return;
+      }
+
+      var msg = [
+        '🎈 *RegalGlob — Solicitud de Cotización*',
+        '',
+        '👤 *Nombre:* '        + n,
+        '📞 *Teléfono:* '      + t,
+        '📅 *Fecha de entrega:* ' + ci,
+        '🎁 *Tipo de arreglo:* ' + (h  || 'Por definir'),
+        '📦 *Tamaño aproximado:* ' + hu,
+        m ? '💬 *Detalles:* ' + m : null,
+        '',
+        'Quisiera cotizar este arreglo. ¡Gracias!'
+      ].filter(Boolean).join('\n');
+
+      window.open(
+        'https://wa.me/528182100831?text=' + encodeURIComponent(msg),
+        '_blank', 'noopener'
+      );
+    });
+
+    /* Date min value */
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('checkin').min = today;
+  }
+
+}());
+</script>
+</body>
+</html>
