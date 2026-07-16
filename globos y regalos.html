@@ -229,7 +229,7 @@ ul { list-style: none; }
   letter-spacing: -1px; color: var(--white);
   margin-bottom: 18px; min-height: 1.05em;
   opacity: 0; transform: translateY(36px);
-  animation: fadeUp 1s var(--ease-out) 0.45s forwards;
+  animation: fadeUp 1s var(--ease-out) 0.45s forwards, titleFloat 7s ease-in-out infinite 1.8s;
 }
 #htl-text {
   font-style: italic;
@@ -240,6 +240,9 @@ ul { list-style: none; }
   animation: titleShimmer 7s ease-in-out infinite;
 }
 @keyframes titleShimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+@keyframes titleFloat { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.01); } }
+@keyframes subtitleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes sectionTitleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 
 .typer-cursor {
   display: inline-block; width: 2px; height: 0.85em;
@@ -256,7 +259,7 @@ ul { list-style: none; }
   letter-spacing: 0.5px;
   margin-bottom: 30px;
   opacity: 0; transform: translateY(24px);
-  animation: fadeUp 1s var(--ease-out) 0.75s forwards, subtitlePulse 7s ease-in-out infinite 2.5s;
+  animation: fadeUp 1s var(--ease-out) 0.75s forwards, subtitlePulse 7s ease-in-out infinite 2.5s, subtitleFloat 7s ease-in-out infinite 3s;
 }
 @keyframes subtitlePulse { 0%,100% { color: rgba(255,255,255,0.62); } 50% { color: rgba(232,112,155,0.9); } }
 
@@ -364,7 +367,7 @@ ul { list-style: none; }
 
 /* Reveal con leve desenfoque para títulos y subtítulos — más presencia al aparecer */
 .text-reveal { filter: blur(7px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out), filter 0.8s var(--ease-out); }
-.text-reveal.visible { filter: blur(0); }
+.text-reveal.visible { filter: blur(0); animation: sectionTitleFloat 6s ease-in-out infinite 0.7s; }
 
 /* =============================================
    PARTÍCULAS — acentos flotantes rosa/púrpura
@@ -389,7 +392,19 @@ ul { list-style: none; }
 /* =============================================
    ABOUT — blush section
 ============================================= */
-#about { padding: 120px 0; background: var(--blush); position: relative; overflow: hidden; }
+#about {
+  padding: 120px 0;
+  background:
+    linear-gradient(120deg, rgba(247,236,242,0.97) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1800&q=80') center 35% / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#about::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(208,64,122,0.12), transparent 34%),
+              radial-gradient(circle at 85% 18%, rgba(119,82,164,0.14), transparent 30%);
+  pointer-events: none;
+}
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
 
 .about-visual { position: relative; }
@@ -446,7 +461,18 @@ ul { list-style: none; }
 /* =============================================
    POR QUÉ REGALGLOB (#amenities) — white section
 ============================================= */
-#amenities { padding: 120px 0; background: var(--white); }
+#amenities {
+  padding: 120px 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=80') center / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#amenities::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.14) 0%, transparent 40%, rgba(208,64,122,0.08) 100%);
+  pointer-events: none;
+}
 #amenities .section-title { color: var(--text-dark); }
 #amenities .section-lead  { color: var(--text-mid); }
 
@@ -526,7 +552,18 @@ ul { list-style: none; }
 /* =============================================
    CÓMO FUNCIONA (#proceso) — blush section
 ============================================= */
-#proceso { padding: 120px 0; background: var(--blush-2); position: relative; overflow: hidden; }
+#proceso {
+  padding: 120px 0;
+  background:
+    linear-gradient(120deg, rgba(242,220,235,0.95) 0%, rgba(247,236,242,0.92) 100%),
+    url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=80') center 40% / cover no-repeat;
+  position: relative; overflow: hidden;
+}
+#proceso::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(208,64,122,0.13), transparent 30%);
+  pointer-events: none;
+}
 #proceso .section-title { color: var(--text-dark); }
 #proceso .section-lead  { color: var(--text-mid); }
 #proceso .container { position: relative; z-index: 2; }
@@ -774,8 +811,8 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
     <h1 class="hero-title" aria-label="El regalo, elevado.">
       <span id="htl-text" aria-hidden="true"></span><span class="typer-cursor" id="hero-cursor" aria-hidden="true"></span>
     </h1>
-    <p class="hero-subtitle">Bouquets de globos y kits de regalo, diseñados a mano para cada ocasión</p>
-    <p class="hero-desc">Cumpleaños, baby showers, aniversarios y eventos — cotiza tu arreglo por WhatsApp y recíbelo listo para sorprender.</p>
+    <p class="hero-subtitle">Bouquets, kits de regalo y decoración para cumpleaños, baby showers, aniversarios y eventos especiales</p>
+    <p class="hero-desc">Creamos arreglos de globos y regalos con estilo propio para celebraciones únicas, desde un detalle íntimo hasta una instalación completa.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Cotizar por WhatsApp</a>
       <a href="#rooms"   class="btn-ghost">Ver Categorías</a>
@@ -807,20 +844,20 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
       <div class="about-content">
         <p class="section-tag no-lines reveal">Nuestra Historia</p>
         <h2 class="about-title reveal d1 text-reveal">Detrás de cada arreglo,<br>un <em>regalo con intención</em></h2>
-        <p class="about-text reveal d2">RegalGlob nace de una idea simple: un regalo se siente distinto cuando además de bonito, flota. Diseñamos bouquets de globos y kits de regalo pensados para sorprender, desde una caja compacta hasta una instalación completa para tu evento.</p>
-        <p class="about-text reveal d2">Cada pieza se arma a mano, combinando globos de larga duración con detalles cuidadosamente seleccionados — para que tú solo te preocupes por la cara de quien lo recibe.</p>
+        <p class="about-text reveal d2">RegalGlob nace de una idea simple: un regalo se siente distinto cuando además de bonito, cuenta una historia. Diseñamos bouquets, kits de regalo y decoraciones para cumpleaños, baby showers, aniversarios, San Valentín y eventos corporativos.</p>
+        <p class="about-text reveal d2">Cada pieza se arma con cuidado, combinando diseño, color y presentación para que el detalle se vea impecable desde el primer vistazo.</p>
         <div class="about-stats reveal d3">
           <div class="about-stat">
             <strong>A mano</strong>
-            <span>Diseño artesanal, sin plantillas</span>
+            <span>Diseño personalizado, con estilo propio</span>
           </div>
           <div class="about-stat">
             <strong>A tu gusto</strong>
-            <span>Elegimos la paleta perfecta para tu ocasión</span>
+            <span>Paleta cuidada para cada ocasión</span>
           </div>
           <div class="about-stat">
             <strong>Listo</strong>
-            <span>Entrega cuidadosa, sin complicaciones</span>
+            <span>Presentación cuidada y coordinación simple</span>
           </div>
         </div>
       </div>
@@ -835,7 +872,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
     <div class="section-header">
       <p class="section-tag reveal">Categorías</p>
       <h2 class="section-title reveal d1 text-reveal" id="rooms-title" style="color:var(--white);">Un arreglo para <em>cada ocasión</em></h2>
-      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-muted);">Desde un detalle sencillo hasta una instalación completa para tu evento — elige la categoría y personalizamos el resto.</p>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-muted);">Desde bouquets y kits de regalo hasta decoración para baby showers, aniversarios, San Valentín, cumpleaños y eventos corporativos.</p>
     </div>
     <div class="rooms-grid">
 
@@ -856,7 +893,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
           <div class="room-content">
             <p class="room-tag">El clásico que nunca falla</p>
             <h3 class="room-name">Cumpleaños</h3>
-            <p class="room-desc">Bouquets de globos, números gigantes y kits sorpresa para hacer inolvidable cada cumpleaños — a domicilio o para recoger.</p>
+            <p class="room-desc">Bouquets, números gigantes y decoración para que cada fiesta se vea más especial y memorable.</p>
           </div>
         </div>
       </article>
@@ -878,7 +915,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
           <div class="room-content">
             <p class="room-tag">El regalo, resuelto</p>
             <h3 class="room-name">Kits de Regalo</h3>
-            <p class="room-desc">Cajas y kits que combinan globos con detalles cuidadosamente elegidos — el regalo perfecto ya armado, listo para entregar.</p>
+            <p class="room-desc">Cajas y kits que combinan globos con detalles cuidadosamente elegidos para sorprender desde el primer vistazo.</p>
           </div>
         </div>
       </article>
@@ -901,7 +938,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
           <div class="room-content">
             <p class="room-tag">A la medida de tu evento</p>
             <h3 class="room-name">Eventos</h3>
-            <p class="room-desc">Decoración con globos para baby showers, aniversarios, San Valentín y eventos corporativos — diseñamos la ambientación completa.</p>
+            <p class="room-desc">Decoración con globos y ambientación para baby showers, aniversarios, San Valentín y eventos corporativos.</p>
           </div>
         </div>
       </article>
@@ -915,32 +952,33 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
 
 <!-- ============ POR QUÉ REGALGLOB (#amenities) — white ============ -->
 <section id="amenities" aria-labelledby="amenities-title">
+  <div class="particles on-light" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="container" style="padding:120px 0;">
     <div class="section-header">
       <p class="section-tag reveal">Por qué RegalGlob</p>
       <h2 class="section-title reveal d1 text-reveal" id="amenities-title">La diferencia está en el <em>detalle</em></h2>
-      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-mid);">No somos una tienda de globos genérica — cuidamos cada arreglo como si fuera para nosotros.</p>
+      <p class="section-lead reveal d2 text-reveal" style="color:var(--text-mid);">No somos una tienda de globos genérica; cuidamos cada detalle para que tu celebración luzca elegante y única.</p>
     </div>
     <div class="amenities-grid">
       <div class="amenity-card reveal">
         <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg></div>
         <h3 class="amenity-name">Diseño Personalizado</h3>
-        <p class="amenity-desc">Elegimos colores, tamaños y estilo según la ocasión y tu gusto — nada de plantillas genéricas.</p>
+        <p class="amenity-desc">Adaptamos colores, tamaños y estilo a la ocasión para que cada proyecto se sienta auténtico y pensado para ti.</p>
       </div>
       <div class="amenity-card reveal d1">
         <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
         <h3 class="amenity-name">Entrega Puntual a Domicilio</h3>
-        <p class="amenity-desc">Coordinamos la entrega para que tu arreglo llegue impecable, justo a tiempo.</p>
+        <p class="amenity-desc">Coordinamos la entrega y el montaje para que cada detalle llegue en el momento indicado.</p>
       </div>
       <div class="amenity-card reveal d2">
         <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <h3 class="amenity-name">Empaque de Regalo de Lujo</h3>
-        <p class="amenity-desc">Listones, papel y detalles de presentación cuidados al milímetro — hasta el empaque se ve como regalo.</p>
+        <p class="amenity-desc">Cuidamos el empaque y los acabados para que el regalo se vea tan especial como el mensaje que lleva.</p>
       </div>
       <div class="amenity-card reveal d3">
         <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3 class="amenity-name">Respuesta Rápida</h3>
-        <p class="amenity-desc">Cotiza, elige y confirma tu pedido en minutos, directo desde tu celular por WhatsApp.</p>
+        <p class="amenity-desc">Cotiza y confirma tu pedido por WhatsApp con respuestas ágiles y comunicación clara.</p>
       </div>
       <div class="amenity-card reveal">
         <div class="amenity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.8 19.79 19.79 0 01.79 1.1 2 2 0 012.77 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.77a16 16 0 006.29 6.29l1.13-1.13a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
@@ -998,7 +1036,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
       <div class="gallery-item gi-1">
         <img src="https://images.unsplash.com/photo-1525268771113-32d9e9021a97?auto=format&fit=crop&w=900&q=80"
              alt="Manos sosteniendo globos rosa, rosa claro y blanco" loading="lazy">
-        <div class="gi-label">Bouquet de cumpleaños</div>
+        <div class="gi-label">Bouquet premium</div>
       </div>
 
       <div class="gallery-item gi-2">
@@ -1010,7 +1048,7 @@ footer { background: var(--black); padding: 68px 5% 36px; border-top: 1px solid 
       <div class="gallery-item gi-3">
         <img src="https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?auto=format&fit=crop&w=900&q=80"
              alt="Arco de globos con letras luminosas para fiesta" loading="lazy">
-        <div class="gi-label">Arco de globos</div>
+        <div class="gi-label">Decoración de evento</div>
       </div>
 
       <div class="gallery-item gi-4">
